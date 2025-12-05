@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { SectionId, ChatMessage } from '../types';
-import { Send, Bot, User, Mail, MapPin, Phone, MessageCircle, Globe } from 'lucide-react';
-import { generateAIResponse } from '../services/geminiService';
+import { Send, Bot, Mail, MapPin, Phone, MessageCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([
@@ -20,6 +18,30 @@ const Contact: React.FC = () => {
     scrollToBottom();
   }, [chatHistory]);
 
+  const getSimulatedResponse = (text: string): string => {
+    const lowerText = text.toLowerCase();
+    
+    if (lowerText.includes('price') || lowerText.includes('cost') || lowerText.includes('quote') || lowerText.includes('money')) {
+      return "Since every project is unique, we provide bespoke quotes. Please fill out the form or chat on WhatsApp for a quick estimate.";
+    }
+    if (lowerText.includes('service') || lowerText.includes('web') || lowerText.includes('app') || lowerText.includes('software') || lowerText.includes('design')) {
+      return "We specialize in Websites, Web Apps, Custom Software, SEO, and Digital Marketing. What specifically are you looking to build?";
+    }
+    if (lowerText.includes('seo') || lowerText.includes('marketing') || lowerText.includes('traffic')) {
+      return "Our data-driven SEO and marketing strategies are designed to maximize ROI. We'd love to audit your current site.";
+    }
+    if (lowerText.includes('hello') || lowerText.includes('hi') || lowerText.includes('hey')) {
+      return "Hello! Welcome to Equinolabs. How can I help you elevate your digital presence today?";
+    }
+    if (lowerText.includes('contact') || lowerText.includes('call') || lowerText.includes('email') || lowerText.includes('number')) {
+      return "You can contact our team directly via the form here, or click the WhatsApp button for an instant response.";
+    }
+    if (lowerText.includes('location') || lowerText.includes('where') || lowerText.includes('address')) {
+      return "We are headquartered in Tech City, but we serve clients globally with 24/7 support.";
+    }
+    return "That sounds interesting! To discuss this in detail, please connect with our engineering team via WhatsApp using the button below.";
+  };
+
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputText.trim()) return;
@@ -34,9 +56,9 @@ const Contact: React.FC = () => {
     setInputText('');
     setIsTyping(true);
 
-    try {
-      const historyForAI = chatHistory.map(msg => ({ role: msg.role, text: msg.text }));
-      const responseText = await generateAIResponse(userMsg.text, historyForAI);
+    // Simulate network delay and "thinking"
+    setTimeout(() => {
+      const responseText = getSimulatedResponse(userMsg.text);
       
       const botMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
@@ -44,11 +66,8 @@ const Contact: React.FC = () => {
         text: responseText
       };
       setChatHistory(prev => [...prev, botMsg]);
-    } catch (err) {
-      console.error(err);
-    } finally {
       setIsTyping(false);
-    }
+    }, 1500);
   };
 
   return (
@@ -65,13 +84,13 @@ const Contact: React.FC = () => {
           {/* Traditional Contact Info */}
           <div className="flex flex-col gap-8">
              <div className="bg-brand-gray p-8 border-l-4 border-brand-red">
-                <h3 className="text-2xl font-bold text-white mb-6">Operations</h3>
+                <h3 className="text-2xl font-bold text-white mb-6">Headquarters</h3>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <Globe className="text-brand-red w-6 h-6 mt-1" />
+                    <MapPin className="text-brand-red w-6 h-6 mt-1" />
                     <div>
-                      <p className="text-gray-400 font-bold">Remote-First Agency</p>
-                      <p className="text-gray-500 text-sm">Serving clients globally from the cloud.</p>
+                      <p className="text-gray-400">123 Innovation Drive</p>
+                      <p className="text-gray-400">Tech City, CA 90210</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -115,7 +134,7 @@ const Contact: React.FC = () => {
                   <Bot className="text-white w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-white font-bold">EquiBot AI</h3>
+                  <h3 className="text-white font-bold">EquiBot</h3>
                   <p className="text-white/80 text-xs">Always Online • Ask about services</p>
                 </div>
               </div>

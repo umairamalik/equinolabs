@@ -52,12 +52,12 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-col md:flex-row gap-4 justify-center"
         >
-          {/* <a
+          <a
             href={`#${SectionId.WORK}`}
             className="px-8 py-4 bg-brand-red text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-brand-black transition-all duration-300 shadow-[0_0_20px_rgba(217,4,41,0.4)]"
           >
             Our Work
-          </a> */}
+          </a>
           <a
             href={`#${SectionId.CONTACT}`}
             className="px-8 py-4 border border-gray-700 text-white font-bold uppercase tracking-widest text-sm hover:border-white transition-all duration-300"
