@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { SectionId, ChatMessage } from '../types';
-import { Send, Bot, Mail, MapPin, Phone, MessageCircle } from 'lucide-react';
+import { Send, Bot, Mail, Globe, Phone, MessageCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([
@@ -36,8 +36,8 @@ const Contact: React.FC = () => {
     if (lowerText.includes('contact') || lowerText.includes('call') || lowerText.includes('email') || lowerText.includes('number')) {
       return "You can contact our team directly via the form here, or click the WhatsApp button for an instant response.";
     }
-    if (lowerText.includes('location') || lowerText.includes('where') || lowerText.includes('address')) {
-      return "We are headquartered in Tech City, but we serve clients globally with 24/7 support.";
+    if (lowerText.includes('location') || lowerText.includes('where') || lowerText.includes('address') || lowerText.includes('office')) {
+      return "We are a 100% remote agency. This allows us to work with the best talent globally and serve clients worldwide without geographical limits.";
     }
     return "That sounds interesting! To discuss this in detail, please connect with our engineering team via WhatsApp using the button below.";
   };
@@ -84,13 +84,13 @@ const Contact: React.FC = () => {
           {/* Traditional Contact Info */}
           <div className="flex flex-col gap-8">
              <div className="bg-brand-gray p-8 border-l-4 border-brand-red">
-                <h3 className="text-2xl font-bold text-white mb-6">Headquarters</h3>
+                <h3 className="text-2xl font-bold text-white mb-6">Remote First</h3>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <MapPin className="text-brand-red w-6 h-6 mt-1" />
+                    <Globe className="text-brand-red w-6 h-6 mt-1" />
                     <div>
-                      <p className="text-gray-400">123 Innovation Drive</p>
-                      <p className="text-gray-400">Tech City, CA 90210</p>
+                      <p className="text-gray-400">Operating Globally</p>
+                      <p className="text-gray-400">Serving clients worldwide</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
