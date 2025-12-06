@@ -21,6 +21,8 @@ export const generateAIResponse = async (
       - Technical Support
       - Lead Generation
       - Social Media Marketing
+      -Shopify
+      -Ai Agents
 
       Tone: Professional, Innovative, Helpful, Concise.
       Goal: Help the user understand our services, or draft a project inquiry.
