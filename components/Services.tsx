@@ -1,24 +1,9 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionId, Service } from '../types';
-import { Code, Settings, Monitor, Rocket, Search, UserPlus, Globe, Database, Smartphone, Bot, ShoppingBag } from 'lucide-react';
+import { Code, Settings, Monitor, Rocket, Search, UserPlus, Globe, Database, Smartphone } from 'lucide-react';
 
 const services: Service[] = [
-  {
-    id: 'ai-agents',
-    title: 'AI Agents & Automation',
-    description: 'Deploy intelligent, autonomous workforce agents that handle customer service, lead qualification, and complex operational workflows 24/7 without human intervention.',
-    icon: 'Bot',
-    featured: true
-  },
-  {
-    id: 'shopify',
-    title: 'Shopify Experts',
-    description: 'End-to-end Shopify development, custom theme engineering, and conversion rate optimization (CRO) to transform visitors into loyal customers.',
-    icon: 'ShoppingBag',
-    featured: true
-  },
   {
     id: 'web-dev',
     title: 'Websites & Web Apps',
@@ -78,9 +63,7 @@ const iconMap: Record<string, React.ReactNode> = {
   UserPlus: <UserPlus size={32} />,
   Smartphone: <Smartphone size={32} />,
   Code: <Code size={32} />,
-  Globe: <Globe size={32} />,
-  Bot: <Bot size={32} />,
-  ShoppingBag: <ShoppingBag size={32} />
+  Globe: <Globe size={32} />
 };
 
 const Services: React.FC = () => {
@@ -111,24 +94,12 @@ const Services: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`group p-8 transition-all duration-300 hover:-translate-y-2
-                ${service.featured 
-                  ? 'md:col-span-2 bg-gradient-to-br from-brand-black to-brand-red/10 border border-brand-red shadow-[0_0_20px_rgba(217,4,41,0.15)] relative overflow-hidden' 
-                  : 'bg-brand-black border border-gray-800 hover:border-brand-red'
-                }`}
+              className="group p-8 bg-brand-black border border-gray-800 hover:border-brand-red transition-all duration-300 hover:-translate-y-2"
             >
-              {service.featured && (
-                 <div className="absolute top-0 right-0 p-2">
-                    <div className="bg-brand-red text-white text-[10px] font-bold uppercase px-2 py-1 tracking-widest rounded-sm">
-                        Featured
-                    </div>
-                 </div>
-              )}
-
-              <div className={`${service.featured ? 'text-brand-red' : 'text-gray-500 group-hover:text-brand-red'} transition-colors duration-300 mb-6`}>
+              <div className="text-gray-500 group-hover:text-brand-red transition-colors duration-300 mb-6">
                 {iconMap[service.icon]}
               </div>
-              <h3 className={`text-xl font-bold text-white mb-4 group-hover:translate-x-1 transition-transform duration-300 ${service.featured ? 'text-2xl' : ''}`}>
+              <h3 className="text-xl font-bold text-white mb-4 group-hover:translate-x-1 transition-transform duration-300">
                 {service.title}
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
