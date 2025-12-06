@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { SectionId, ChatMessage } from '../types';
-import { Send, Bot, Mail, Globe, Phone, MessageCircle } from 'lucide-react';
+import { Send, Bot, User, Mail, MapPin, Phone, MessageCircle, Globe } from 'lucide-react';
+import { generateAIResponse } from '../services/geminiService';
 
 const Contact: React.FC = () => {
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([
@@ -8,39 +10,23 @@ const Contact: React.FC = () => {
   ]);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  
+  // Changed from tracking an element to tracking the container
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    // Only scroll the container internally, not the whole window
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   };
 
   useEffect(() => {
     scrollToBottom();
-  }, [chatHistory]);
-
-  const getSimulatedResponse = (text: string): string => {
-    const lowerText = text.toLowerCase();
-    
-    if (lowerText.includes('price') || lowerText.includes('cost') || lowerText.includes('quote') || lowerText.includes('money')) {
-      return "Since every project is unique, we provide bespoke quotes. Please fill out the form or chat on WhatsApp for a quick estimate.";
-    }
-    if (lowerText.includes('service') || lowerText.includes('web') || lowerText.includes('app') || lowerText.includes('software') || lowerText.includes('design')) {
-      return "We specialize in Websites, Web Apps, Custom Software, SEO, and Digital Marketing. What specifically are you looking to build?";
-    }
-    if (lowerText.includes('seo') || lowerText.includes('marketing') || lowerText.includes('traffic')) {
-      return "Our data-driven SEO and marketing strategies are designed to maximize ROI. We'd love to audit your current site.";
-    }
-    if (lowerText.includes('hello') || lowerText.includes('hi') || lowerText.includes('hey')) {
-      return "Hello! Welcome to Equinolabs. How can I help you elevate your digital presence today?";
-    }
-    if (lowerText.includes('contact') || lowerText.includes('call') || lowerText.includes('email') || lowerText.includes('number')) {
-      return "You can contact our team directly via the form here, or click the WhatsApp button for an instant response.";
-    }
-    if (lowerText.includes('location') || lowerText.includes('where') || lowerText.includes('address') || lowerText.includes('office')) {
-      return "We are a 100% remote agency. This allows us to work with the best talent globally and serve clients worldwide without geographical limits.";
-    }
-    return "That sounds interesting! To discuss this in detail, please connect with our engineering team via WhatsApp using the button below.";
-  };
+  }, [chatHistory, isTyping]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,9 +42,9 @@ const Contact: React.FC = () => {
     setInputText('');
     setIsTyping(true);
 
-    // Simulate network delay and "thinking"
-    setTimeout(() => {
-      const responseText = getSimulatedResponse(userMsg.text);
+    try {
+      const historyForAI = chatHistory.map(msg => ({ role: msg.role, text: msg.text }));
+      const responseText = await generateAIResponse(userMsg.text, historyForAI);
       
       const botMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
@@ -66,8 +52,11 @@ const Contact: React.FC = () => {
         text: responseText
       };
       setChatHistory(prev => [...prev, botMsg]);
+    } catch (err) {
+      console.error(err);
+    } finally {
       setIsTyping(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -84,13 +73,13 @@ const Contact: React.FC = () => {
           {/* Traditional Contact Info */}
           <div className="flex flex-col gap-8">
              <div className="bg-brand-gray p-8 border-l-4 border-brand-red">
-                <h3 className="text-2xl font-bold text-white mb-6">Remote First</h3>
+                <h3 className="text-2xl font-bold text-white mb-6">Operations</h3>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <Globe className="text-brand-red w-6 h-6 mt-1" />
                     <div>
-                      <p className="text-gray-400">Operating Globally</p>
-                      <p className="text-gray-400">Serving clients worldwide</p>
+                      <p className="text-gray-400 font-bold">Remote-First Agency</p>
+                      <p className="text-gray-500 text-sm">Serving clients globally from the cloud.</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -134,13 +123,16 @@ const Contact: React.FC = () => {
                   <Bot className="text-white w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-white font-bold">EquiBot</h3>
+                  <h3 className="text-white font-bold">EquiBot AI</h3>
                   <p className="text-white/80 text-xs">Always Online • Ask about services</p>
                 </div>
               </div>
             </div>
 
-            <div className="flex-grow p-6 overflow-y-auto space-y-4">
+            <div 
+              ref={chatContainerRef}
+              className="flex-grow p-6 overflow-y-auto space-y-4 scroll-smooth"
+            >
               {chatHistory.map((msg) => (
                 <div
                   key={msg.id}
@@ -168,7 +160,6 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
               )}
-              <div ref={messagesEndRef} />
             </div>
 
             <div className="p-4 bg-brand-black border-t border-gray-800">
