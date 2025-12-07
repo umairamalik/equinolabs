@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -15,8 +15,14 @@ const Footer: React.FC = () => {
 
         <div className="flex gap-6">
           <a href="#" className="text-gray-500 hover:text-brand-red transition-colors"><Facebook size={20} /></a>
-          <a href="#" className="text-gray-500 hover:text-brand-red transition-colors"><Twitter size={20} /></a>
-          <a href="#" className="text-gray-500 hover:text-brand-red transition-colors"><Instagram size={20} /></a>
+          <a 
+            href="https://www.instagram.com/equinolabs/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-gray-500 hover:text-brand-red transition-colors"
+          >
+            <Instagram size={20} />
+          </a>
           <a href="#" className="text-gray-500 hover:text-brand-red transition-colors"><Linkedin size={20} /></a>
         </div>
       </div>
