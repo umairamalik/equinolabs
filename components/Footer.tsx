@@ -23,7 +23,14 @@ const Footer: React.FC = () => {
           >
             <Instagram size={20} />
           </a>
-          <a href="#" className="text-gray-500 hover:text-brand-red transition-colors"><Linkedin size={20} /></a>
+          <a 
+            href="https://www.linkedin.com/company/equinolabs/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-brand-red transition-colors"
+          >
+            <Linkedin size={20} />
+          </a>
         </div>
       </div>
     </footer>
