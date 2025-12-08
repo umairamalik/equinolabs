@@ -3,21 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Equinolabs | Digital Excellence</title>
-<link rel="icon" type="image/svg+xml"
-href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23D90429' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1'/%3E%3C/svg%3E">
 
+    <!-- ======================= SEO META TAGS ======================= -->
+    <title>Equinolabs | Digital Excellence & Software Solutions</title>
+    <meta name="description" content="Equinolabs provides high-quality software solutions: code fixing, MVP development, bug resolution, AI automation, and web scraping. Fast, reliable, global remote services." />
+    <meta name="keywords" content="Equinolabs, software development, code fixing, mvp development, react developer, bug fixing, ai automation, web scraping, remote developer, tech agency" />
+    <meta name="author" content="Equinolabs" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.equinolabs.in/" />
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Equinolabs | Digital Excellence & Software Solutions" />
+    <meta property="og:description" content="Need expert help? We build MVPs, fix code, debug issues, automate workflows, and extract data via web scraping. Your remote tech partner." />
+    <meta property="og:url" content="https://www.equinolabs.in/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Equinolabs | Digital Excellence & Software Solutions" />
+    <meta name="twitter:description" content="Expert solutions in software development, debugging, automation, and scraping. Work with a modern global tech partner." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" 
+href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D90429' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17.5 7c-1.8 0-3.3 1.2-5.5 4-2.2-2.8-3.7-4-5.5-4A4.5 4.5 0 0 0 6 16c1.8 0 3.3-1.2 5.5-4 2.2 2.8 3.7 4 5.5 4A4.5 4.5 0 1 0 17.5 7z'/%3E%3C/svg%3E">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
               brand: {
-                red: '#D90429', // Vivid Red
+                red: '#D90429',
                 darkRed: '#8D0801',
                 black: '#080808',
                 gray: '#121212',
@@ -32,45 +58,39 @@ href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' s
         }
       }
     </script>
+
     <style>
-      html {
-        scroll-padding-top: 100px; /* Offset for fixed navbar */
-      }
-      body {
-        background-color: #080808;
-        color: #ffffff;
-      }
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #121212;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #D90429;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #ef233c;
-      }
+      html { scroll-padding-top: 100px; }
+      body { background-color: #080808; color: #ffffff; }
+
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #121212; }
+      ::-webkit-scrollbar-thumb { background: #D90429; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #ef233c; }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "react": "https://aistudiocdn.com/react@^19.2.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
-    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
+
+    <!-- Import Map -->
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://aistudiocdn.com/react@^19.2.1/",
+        "react": "https://aistudiocdn.com/react@^19.2.1",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+        "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25"
+      }
+    }
+    </script>
+
+    <!-- Your CSS file -->
+    <link rel="stylesheet" href="/index.css">
+  </head>
+
   <body>
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+
+    <!-- React Entry File -->
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
