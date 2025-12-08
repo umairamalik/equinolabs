@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const navLinks = [
     { label: 'Home', href: `#${SectionId.HOME}` },
     { label: 'Services', href: `#${SectionId.SERVICES}` },
-  
+    { label: 'Work', href: `#${SectionId.WORK}` },
     { label: 'About', href: `#${SectionId.ABOUT}` },
     { label: 'Case Studies', href: `#case-studies` }, // Special Link
     { label: 'Contact', href: `#${SectionId.CONTACT}` },
@@ -92,7 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           onClick={(e) => handleNavClick(e, '#')}
           className="text-2xl font-display font-black tracking-widest text-white uppercase flex items-center gap-2 cursor-pointer z-[102]"
         >
-          Equino<span className="text-brand-red">labs</span>
+          Equino<span className="text-brand-red">labs</span>.
         </a>
 
         {/* Desktop Menu */}

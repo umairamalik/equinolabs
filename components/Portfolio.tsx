@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionId, PortfolioItem, Page } from '../types';
 import { ExternalLink, ArrowRight, FileText } from 'lucide-react';
+import criminalImg from "../assets/images/ESS.jpg";
 
 interface PortfolioProps {
   onNavigate: (page: Page) => void;
@@ -12,44 +13,45 @@ const portfolioItems: PortfolioItem[] = [
     id: 'case-study-criminal',
     title: 'Criminal Research Tool',
     category: 'AI & Legal Tech',
-    imageUrl: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+
+    imageUrl: criminalImg,
     link: '#case-study'
-  },
-  {
-    id: 'p1',
-    title: 'Nexus E-Commerce',
-    category: 'Web Development',
-    imageUrl: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    link: '#'
-  },
-  {
-    id: 'p2',
-    title: 'FinCore Dashboard',
-    category: 'SaaS Application',
-    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    link: '#'
-  },
-  {
-    id: 'p3',
-    title: 'Urban Realty',
-    category: 'Lead Generation',
-    imageUrl: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    link: '#'
-  },
-  {
-    id: 'p4',
-    title: 'Vital Health App',
-    category: 'Mobile App',
-    imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    link: '#'
-  },
-  {
-    id: 'p5',
-    title: 'Aero Dynamics',
-    category: 'Brand & SEO',
-    imageUrl: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    link: '#'
-  }
+  }//,
+//   {
+//     id: 'p1',
+//     title: 'Nexus E-Commerce',
+//     category: 'Web Development',
+//     imageUrl: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+//     link: '#'
+//   },
+//   {
+//     id: 'p2',
+//     title: 'FinCore Dashboard',
+//     category: 'SaaS Application',
+//     imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+//     link: '#'
+//   },
+//   {
+//     id: 'p3',
+//     title: 'Urban Realty',
+//     category: 'Lead Generation',
+//     imageUrl: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+//     link: '#'
+//   },
+//   {
+//     id: 'p4',
+//     title: 'Vital Health App',
+//     category: 'Mobile App',
+//     imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+//     link: '#'
+//   },
+//   {
+//     id: 'p5',
+//     title: 'Aero Dynamics',
+//     category: 'Brand & SEO',
+//     imageUrl: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+//     link: '#'
+//   }
 ];
 
 const Portfolio: React.FC<PortfolioProps> = ({ onNavigate }) => {
