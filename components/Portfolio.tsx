@@ -1,9 +1,9 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionId, PortfolioItem, Page } from '../types';
 import { ExternalLink, ArrowRight, FileText } from 'lucide-react';
 import criminalImg from "../assets/images/ESS.jpg";
-
 interface PortfolioProps {
   onNavigate: (page: Page) => void;
 }
@@ -13,10 +13,10 @@ const portfolioItems: PortfolioItem[] = [
     id: 'case-study-criminal',
     title: 'Criminal Research Tool',
     category: 'AI & Legal Tech',
-
+    // Updated image to represent investigation/research (Magnifying glass)
     imageUrl: criminalImg,
     link: '#case-study'
-  }//,
+  },
 //   {
 //     id: 'p1',
 //     title: 'Nexus E-Commerce',
@@ -62,7 +62,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ onNavigate }) => {
     if (item.link === '#case-study') {
       e.preventDefault();
       onNavigate('case-study');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo(0, 0); // Instant scroll for page change
     }
   };
 
