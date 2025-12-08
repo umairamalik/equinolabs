@@ -10,6 +10,7 @@ export interface PortfolioItem {
   title: string;
   category: string;
   imageUrl: string;
+  link: string;
 }
 
 export interface ChatMessage {
@@ -23,5 +24,8 @@ export enum SectionId {
   ABOUT = 'about',
   SERVICES = 'services',
   WORK = 'work',
-  CONTACT = 'contact'
+  CONTACT = 'contact',
+  CASE_STUDIES = 'case-studies'
 }
+
+export type Page = 'home' | 'case-study';

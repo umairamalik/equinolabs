@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import { SectionId } from '../types';
+import { Menu, X, FlaskConical } from 'lucide-react';
+import { SectionId, Page } from '../types';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  currentPage: Page;
+  onNavigate: (page: Page) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -16,6 +21,33 @@ const Navbar: React.FC = () => {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    
+    // Check if it's the Case Studies link
+    if (href === '#case-studies') {
+      onNavigate('case-study');
+      setIsMobileMenuOpen(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    // Default behavior for other links (Main Home Page)
+    if (currentPage !== 'home') {
+      onNavigate('home');
+      // Wait for state update to mount home components before scrolling
+      setTimeout(() => {
+        const targetId = href.replace('#', '');
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else if (href === '#') {
+           window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 100);
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    // Standard smooth scroll if already on home
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
 
@@ -41,14 +73,16 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { label: 'Home', href: `#${SectionId.HOME}` },
     { label: 'Services', href: `#${SectionId.SERVICES}` },
+  
     { label: 'About', href: `#${SectionId.ABOUT}` },
+    { label: 'Case Studies', href: `#case-studies` }, // Special Link
     { label: 'Contact', href: `#${SectionId.CONTACT}` },
   ];
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
-        isScrolled ? 'bg-brand-black/95 backdrop-blur-md py-4 shadow-lg border-b border-brand-gray' : 'bg-transparent py-6'
+        isScrolled || currentPage === 'case-study' ? 'bg-brand-black/95 backdrop-blur-md py-4 shadow-lg border-b border-brand-gray' : 'bg-transparent py-6'
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center relative z-[101]">
@@ -68,7 +102,9 @@ const Navbar: React.FC = () => {
               key={link.label}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-brand-red transition-colors duration-200 cursor-pointer relative z-[102]"
+              className={`text-sm font-bold uppercase tracking-widest transition-colors duration-200 cursor-pointer relative z-[102] ${
+                currentPage === 'case-study' && link.label === 'Case Studies' ? 'text-brand-red' : 'text-gray-300 hover:text-brand-red'
+              }`}
             >
               {link.label}
             </a>
