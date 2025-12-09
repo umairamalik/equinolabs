@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Database, Search, ShieldCheck, FileText, Cpu, CheckCircle, Clock, Zap, BarChart } from 'lucide-react';
 
 interface CaseStudyProps {
   onBack: () => void;
+  onContact: () => void;
 }
 
-const CaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
+const CaseStudy: React.FC<CaseStudyProps> = ({ onBack, onContact }) => {
+  // Force scroll to top when component mounts to prevent mobile scroll issues
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -185,7 +191,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
         <div className="text-center">
           <p className="text-gray-400 mb-6">Want to build similar intelligence tools for your business?</p>
           <button 
-            onClick={onBack}
+            onClick={onContact}
             className="px-10 py-4 bg-brand-red text-white font-bold uppercase tracking-widest hover:bg-white hover:text-brand-black transition-all shadow-[0_0_20px_rgba(217,4,41,0.4)]"
           >
             Contact Equinolabs

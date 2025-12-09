@@ -8,10 +8,20 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import CaseStudy from './components/CaseStudy';
-import { Page } from './types';
+import { Page, SectionId } from './types';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
+
+  const handleContactClick = () => {
+    setCurrentPage('home');
+    setTimeout(() => {
+      const contactSection = document.getElementById(SectionId.CONTACT);
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
 
   return (
     <div className="bg-brand-black text-white selection:bg-brand-red selection:text-white min-h-screen flex flex-col">
@@ -27,7 +37,10 @@ function App() {
             <Contact />
           </>
         ) : (
-          <CaseStudy onBack={() => setCurrentPage('home')} />
+          <CaseStudy 
+            onBack={() => setCurrentPage('home')} 
+            onContact={handleContactClick}
+          />
         )}
       </main>
       
