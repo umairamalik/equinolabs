@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex gap-6">
-          <a href="#" className="text-gray-500 hover:text-brand-red transition-colors"><Facebook size={20} /></a>
+          
           <a 
             href="https://www.instagram.com/equinolabs/" 
             target="_blank" 
@@ -31,6 +31,7 @@ const Footer: React.FC = () => {
           >
             <Linkedin size={20} />
           </a>
+          <a href="#" className="text-gray-500 hover:text-brand-red transition-colors"><Facebook size={20} /></a>
         </div>
       </div>
     </footer>

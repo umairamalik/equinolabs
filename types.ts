@@ -25,7 +25,8 @@ export enum SectionId {
   SERVICES = 'services',
   WORK = 'work',
   CONTACT = 'contact',
-  CASE_STUDIES = 'case-studies'
+  CASE_STUDIES = 'case-studies',
+  // TESTIMONIALS = 'testimonials'
 }
 
 export type Page = 'home' | 'case-study';
