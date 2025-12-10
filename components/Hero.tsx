@@ -4,6 +4,14 @@ import { SectionId } from '../types';
 import { ChevronDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const handleScrollDown = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById(SectionId.SERVICES);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section
       id={SectionId.HOME}
@@ -71,9 +79,11 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-20"
       >
-        <ChevronDown className="text-gray-500 w-8 h-8" />
+        <a href={`#${SectionId.SERVICES}`} onClick={handleScrollDown} aria-label="Scroll down">
+          <ChevronDown className="text-gray-500 w-8 h-8 hover:text-brand-red transition-colors cursor-pointer" />
+        </a>
       </motion.div>
     </section>
   );
