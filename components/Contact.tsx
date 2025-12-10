@@ -84,7 +84,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-4">
                     <Mail className="text-brand-red w-6 h-6" />
-                    <a href="mailto:hello@equinolabs.com" className="text-white hover:text-brand-red transition-colors">hello@equinolabs.com</a>
+                    <a href="mailto:hello@equinolabs.in" className="text-white hover:text-brand-red transition-colors">hello@equinolabs.in</a>
                   </div>
                   <div className="flex items-center gap-4">
                     <Phone className="text-brand-red w-6 h-6" />
