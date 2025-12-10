@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionId, PortfolioItem, Page } from '../types';
 import { ExternalLink, ArrowRight, FileText } from 'lucide-react';
-import criminalImg from "../assets/images/ESS.jpg";
+import criminalImg from "../assets/images/edgescreening.png";
+import mindvilleImg from "../assets/images/mindville.png";
+import karkashImg from "../assets/images/KaarKash.png";
+import vuicoffeeImg from "../assets/images/VuiCoffee.png";
+import mindvilleshopImg from "../assets/images/mindvilleshop.png";
 interface PortfolioProps {
   onNavigate: (page: Page) => void;
 }
@@ -17,34 +21,34 @@ const portfolioItems: PortfolioItem[] = [
     imageUrl: criminalImg,
     link: '#case-study'
   },
-//   {
-//     id: 'p1',
-//     title: 'Nexus E-Commerce',
-//     category: 'Web Development',
-//     imageUrl: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-//     link: '#'
-//   },
-//   {
-//     id: 'p2',
-//     title: 'FinCore Dashboard',
-//     category: 'SaaS Application',
-//     imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-//     link: '#'
-//   },
-//   {
-//     id: 'p3',
-//     title: 'Urban Realty',
-//     category: 'Lead Generation',
-//     imageUrl: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-//     link: '#'
-//   },
-//   {
-//     id: 'p4',
-//     title: 'Vital Health App',
-//     category: 'Mobile App',
-//     imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-//     link: '#'
-//   },
+ {
+    id: 'p1',
+    title: 'MindVille – Modern Mental Wellness Platform',
+    category: 'Wellness Website',
+    imageUrl: mindvilleImg,
+   link: 'https://mindville.in/'
+ },
+  {
+    id: 'p2',
+  title: 'KaarKash – Kashmiri Handicrafts E-commerce Website',
+    category: 'Online Store Development',
+   imageUrl: karkashImg,
+    link: 'https://kaarkash.com/'
+   },
+   {
+    id: 'p3',
+     title: 'VuiVui – Specialty Coffee & Café E-commerce Website',
+     category: 'E-commerce / Food & Beverage Website',
+    imageUrl: vuicoffeeImg,
+     link: 'https://vuivui.in/'
+   },
+   {
+    id: 'p4',
+     title: 'MindVille – Mental Wellness & Self-Care E-commerce Site',
+     category: 'Wellness & Self-Care Website',
+    imageUrl: mindvilleshopImg,
+     link: 'https://mindville.shop/'
+   },
 //   {
 //     id: 'p5',
 //     title: 'Aero Dynamics',
@@ -105,11 +109,12 @@ const Portfolio: React.FC<PortfolioProps> = ({ onNavigate }) => {
               className="group relative h-[400px] bg-gray-900 overflow-hidden cursor-pointer rounded-sm border border-gray-800 block"
             >
               {/* Image */}
-              <img 
-                src={item.imageUrl} 
-                alt={item.title} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40"
-              />
+            <img 
+  src={item.imageUrl} 
+  alt={item.title} 
+  className="w-full h-full object-contain bg-black transition-transform duration-700 group-hover:scale-105 opacity-80"
+/>
+
 
               {/* Overlay Gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-transparent opacity-90 transition-opacity duration-300"></div>
